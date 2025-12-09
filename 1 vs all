@@ -21,7 +21,7 @@ local waitTime = 0.2
 local loopThread
 
 tab:AddToggle({
-    text = "Toggle Attack",
+    text = "Toggle Auto Kill",
     flag = "toggle",
     callback = function(v)
         running = v
@@ -79,7 +79,7 @@ tab:AddToggle({
         if autoMoneyRunning then
             autoMoneyThread = task.spawn(function()
                 while autoMoneyRunning do
-                    task.wait(1)
+                    task.wait(0.05)
                     ClaimDailyQuest:FireServer()
                 end
             end)
@@ -88,7 +88,7 @@ tab:AddToggle({
 })
 
 tab:AddBox({
-    text = "Unlock Weapon",
+    text = "Type a weapon you want to unlock",
     flag = "weaponname",
     callback = function(value)
         if value and value ~= "" then
